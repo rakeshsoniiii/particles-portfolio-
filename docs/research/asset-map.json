@@ -1,0 +1,46 @@
+[
+  {
+    "url": "https://ingrassiadaniel.it/portrait.bin",
+    "dest": "public/portrait.bin"
+  },
+  {
+    "url": "https://ingrassiadaniel.it/italy.bin",
+    "dest": "public/italy.bin"
+  },
+  {
+    "url": "https://ingrassiadaniel.it/noise.jpg",
+    "dest": "public/noise.jpg"
+  },
+  {
+    "url": "https://ingrassiadaniel.it/favicon.ico",
+    "dest": "public/favicon.ico"
+  },
+  {
+    "url": "https://ingrassiadaniel.it/opengraph-image.png",
+    "dest": "public/opengraph-image.png"
+  },
+  {
+    "url": "https://ingrassiadaniel.it/twitter-image.png",
+    "dest": "public/twitter-image.png"
+  },
+  {
+    "url": "https://ingrassiadaniel.it/cookie-policy",
+    "dest": "public/cookie-policy/index.html"
+  },
+  {
+    "url": "https://cdn.sanity.io/files/yat2koq0/production/9500bbea214e1ce19dbeb3ec33d4bfba7bc86cfe.mp4",
+    "dest": "public/videos/project-1.mp4"
+  },
+  {
+    "url": "https://cdn.sanity.io/files/yat2koq0/production/6d21ce620f8bafcecdf0c6d1bea513415f08c8f5.mp4",
+    "dest": "public/videos/project-2.mp4"
+  },
+  {
+    "url": "https://cdn.sanity.io/files/yat2koq0/production/6f0aeb4f51009f88320903b9ceeec6ebe081b2f4.mp4",
+    "dest": "public/videos/project-3.mp4"
+  },
+  {
+    "url": "https://cdn.sanity.io/files/yat2koq0/production/1de540b7a5c59587f44615cc2d56808c469a9651.mp4",
+    "dest": "public/videos/project-4.mp4"
+  }
+]

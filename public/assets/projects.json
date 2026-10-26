@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "nla-engine",
+    "title": "NLA Engine",
+    "tagline": "Financial OSINT · Network analysis",
+    "href": "https://nla-engine.onrender.com/",
+    "info": "01 / ANALYSIS",
+    "year": "",
+    "video": "",
+    "image": "/assets/projects/nla-engine.jpg",
+    "description": [
+      "Financial OSINT · Network analysis"
+    ],
+    "stack": [],
+    "stackNote": "",
+    "collaboration": "Personal project by Harpinder Singh.",
+    "partner": "",
+    "partnerUrl": ""
+  },
+  {
+    "slug": "cyber-cell-cdr",
+    "title": "Cyber Cell CDR",
+    "tagline": "CDR & IPDR · Telecom forensics",
+    "href": "https://cyber-cell-cdr.onrender.com/",
+    "info": "02 / FORENSICS",
+    "year": "",
+    "video": "",
+    "image": "/assets/projects/cyber-cell-cdr.jpg",
+    "description": [
+      "CDR & IPDR · Telecom forensics"
+    ],
+    "stack": [],
+    "stackNote": "",
+    "collaboration": "Personal project by Harpinder Singh.",
+    "partner": "",
+    "partnerUrl": ""
+  },
+  {
+    "slug": "ghostnet",
+    "title": "GhostNet",
+    "tagline": "Cybersecurity project",
+    "href": "https://ghostnet-1.onrender.com/",
+    "info": "03 / SECURITY",
+    "year": "",
+    "video": "",
+    "image": "/assets/projects/ghostnet.jpg",
+    "description": [
+      "Cybersecurity project"
+    ],
+    "stack": [],
+    "stackNote": "",
+    "collaboration": "Personal project by Harpinder Singh.",
+    "partner": "",
+    "partnerUrl": ""
+  },
+  {
+    "slug": "ip-changer",
+    "title": "IP Changer",
+    "tagline": "Tor-based IP rotation · Bash",
+    "href": "https://github.com/harpind3r/ip-changer",
+    "info": "04 / AUTOMATION",
+    "year": "",
+    "video": "",
+    "image": "/assets/projects/ip-changer.jpg",
+    "description": [
+      "Tor-based IP rotation · Bash"
+    ],
+    "stack": [],
+    "stackNote": "",
+    "collaboration": "Personal project by Harpinder Singh.",
+    "partner": "",
+    "partnerUrl": ""
+  },
+  {
+    "slug": "get-location",
+    "title": "Get Location",
+    "tagline": "Browser permission awareness · Flask",
+    "href": "https://github.com/harpind3r/Get-location",
+    "info": "05 / AWARENESS",
+    "year": "",
+    "video": "",
+    "image": "/assets/projects/get-location.jpg",
+    "description": [
+      "Browser permission awareness · Flask"
+    ],
+    "stack": [],
+    "stackNote": "",
+    "collaboration": "Personal project by Harpinder Singh.",
+    "partner": "",
+    "partnerUrl": ""
+  },
+  {
+    "slug": "wireless-security-lab",
+    "title": "Wireless Security Lab",
+    "tagline": "Wi-Fi handshake & Evil Twin lab",
+    "href": "https://www.linkedin.com/posts/harpinder-singh-324886402_cybersecurity-ethicalhacking-activity-7514644215507800064-bFMb",
+    "info": "06 / WIRELESS",
+    "year": "",
+    "video": "/assets/projects/Evil twin attack.MP4",
+    "image": "/assets/projects/wireless-security-lab.jpg",
+    "description": [
+      "Wi-Fi handshake & Evil Twin lab"
+    ],
+    "stack": [],
+    "stackNote": "",
+    "collaboration": "Personal project by Harpinder Singh.",
+    "partner": "",
+    "partnerUrl": ""
+  },
+  {
+    "slug": "ransomware-homelab",
+    "title": "Ransomware Home Lab",
+    "tagline": "Isolated virtual lab · Metasploit",
+    "href": "https://www.linkedin.com/posts/harpinder-singh-324886402_cybersecurity-homelab-ethicalhacking-activity-7470407225866588160-0LO9",
+    "info": "07 / HOME LAB",
+    "year": "",
+    "video": "/assets/projects/Ransomware attack.MP4",
+    "image": "/assets/projects/ransomware-homelab.jpg",
+    "description": [
+      "Isolated virtual lab · Metasploit"
+    ],
+    "stack": [],
+    "stackNote": "",
+    "collaboration": "Personal project by Harpinder Singh.",
+    "partner": "",
+    "partnerUrl": ""
+  }
+]

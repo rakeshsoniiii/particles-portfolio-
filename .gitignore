@@ -1,0 +1,6 @@
+dist/
+node_modules/
+*.log
+graphify-out/
+temp-refrence/
+docs/research/rea/
