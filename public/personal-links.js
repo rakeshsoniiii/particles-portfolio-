@@ -139,6 +139,22 @@
     const nav = document.createElement('nav');
     nav.className = 'personal-nav';
     nav.setAttribute('aria-label', 'Profile and resume');
+    const toggle = document.createElement('button');
+    toggle.className = 'personal-nav-toggle';
+    toggle.type = 'button';
+    toggle.textContent = 'Menu';
+    toggle.setAttribute('aria-expanded', 'false');
+    const closeMenu = () => toggle.setAttribute('aria-expanded', 'false');
+    toggle.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', String(toggle.getAttribute('aria-expanded') !== 'true'));
+    });
+    nav.addEventListener('click', event => {
+      if (event.target.closest('a')) closeMenu();
+    });
+    nav.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { closeMenu(); toggle.focus(); }
+    });
+    nav.append(toggle);
     const links = [
       ['Projects', '#projects'],
       ['My Work', '#my-work'],
@@ -200,6 +216,14 @@
   </div>
 
   <div class="my-work-grid">
+    <article class="work-card">
+      <div class="work-card-top">
+        <span class="work-badge badge-ops">ACHIEVEMENT / TRYHACKME</span>
+      </div>
+      <h3 class="work-role">Top 5% globally · Top 500 in India</h3>
+      <p class="case-desc">TryHackMe cybersecurity training and hands-on security challenges.</p>
+      <a class="work-link" href="https://tryhackme.com/p/VENOM.WHO" target="_blank" rel="noopener noreferrer">View TryHackMe profile ↗</a>
+    </article>
     <!-- 1. Beeskilled -->
     <article class="work-card">
       <div class="work-card-top">
@@ -279,7 +303,7 @@
           </div>
           <div class="vuln-status-wrap">
             <span class="status-indicator"></span>
-            <span class="status-msg">Reported; fix confirmation pending</span>
+            <span class="status-msg">Bug fixed</span>
           </div>
         </div>
 
@@ -299,7 +323,7 @@
           </div>
           <div class="vuln-status-wrap">
             <span class="status-indicator"></span>
-            <span class="status-msg">Reported; fix confirmation pending</span>
+            <span class="status-msg">Bug fixed</span>
           </div>
         </div>
       </div>
@@ -361,7 +385,6 @@
   updateFooterMonogram();
   handleProjectsHash();
   initParticleHover();
-  initContactParticleRect();
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
@@ -371,7 +394,6 @@
       updateFooterMonogram();
       handleProjectsHash();
       initParticleHover();
-      initContactParticleRect();
     });
   }
   window.addEventListener('load', () => {
@@ -381,141 +403,14 @@
     updateFooterMonogram();
     handleProjectsHash();
     initParticleHover();
-    initContactParticleRect();
-    setTimeout(() => { tuneLenis(); mountMyWork(); updateFooterMonogram(); initParticleHover(); initContactParticleRect(); }, 200);
-    setTimeout(() => { tuneLenis(); mountMyWork(); updateFooterMonogram(); initParticleHover(); initContactParticleRect(); }, 600);
-    setTimeout(() => { tuneLenis(); mountMyWork(); updateFooterMonogram(); initParticleHover(); initContactParticleRect(); }, 1500);
+    setTimeout(() => { tuneLenis(); mountMyWork(); updateFooterMonogram(); initParticleHover(); }, 200);
+    setTimeout(() => { tuneLenis(); mountMyWork(); updateFooterMonogram(); initParticleHover(); }, 600);
+    setTimeout(() => { tuneLenis(); mountMyWork(); updateFooterMonogram(); initParticleHover(); }, 1500);
   });
 
   window.addEventListener('hashchange', () => {
     handleProjectsHash();
   });
-
-  // ── Animated Particle Rectangle ────────────────────────────────────────
-  // Spawns particles that travel along the 4 edges of the contact section box.
-  function initContactParticleRect() {
-    const contactsSection = document.querySelector('[class*="contacts-module__contacts"]')
-      || document.querySelector('[class*="contacts-module"][class*="contacts"]');
-    if (!contactsSection) return;
-    if (contactsSection.querySelector('.contact-particle-rect')) return; // already mounted
-
-    const canvas = document.createElement('canvas');
-    canvas.className = 'contact-particle-rect';
-    canvas.setAttribute('aria-hidden', 'true');
-    contactsSection.insertBefore(canvas, contactsSection.firstChild);
-
-    const ctx = canvas.getContext('2d');
-    let W = 0, H = 0, raf = null;
-
-    // Particle definition
-    const PARTICLE_COUNT = 220;
-    const particles = [];
-
-    function rand(a, b) { return a + Math.random() * (b - a); }
-
-    // Each particle travels along the rectangle perimeter
-    // perimeter position 0–1 maps: top(0→1), right(1→2), bottom(2→3), left(3→4) — normalized by /4
-    function perimeterToXY(t, w, h) {
-      t = ((t % 1) + 1) % 1; // keep in [0,1)
-      const seg = t * 4;
-      if (seg < 1) return { x: seg * w, y: 0 };
-      if (seg < 2) return { x: w, y: (seg - 1) * h };
-      if (seg < 3) return { x: (1 - (seg - 2)) * w, y: h };
-      return { x: 0, y: (1 - (seg - 3)) * h };
-    }
-
-    function spawnParticle(i) {
-      const speed = rand(0.00018, 0.00055); // perimeter fraction per ms
-      const offset = rand(0, 1);            // starting position along perimeter
-      const size   = rand(0.8, 2.6);
-      const alpha  = rand(0.18, 0.85);
-      // colour: mostly white/grey, occasional accent yellow or teal
-      const roll = Math.random();
-      let colour;
-      if (roll < 0.07) colour = `rgba(244,206,21,${alpha})`;       // yellow accent
-      else if (roll < 0.13) colour = `rgba(55,151,119,${alpha})`;  // teal accent
-      else colour = `rgba(${200 + ~~rand(0,55)},${200 + ~~rand(0,55)},${200 + ~~rand(0,55)},${alpha})`;
-
-      particles[i] = { t: offset, speed, size, colour, alpha };
-    }
-
-    for (let i = 0; i < PARTICLE_COUNT; i++) spawnParticle(i);
-
-    let last = 0;
-    function draw(ts) {
-      const dt = last ? ts - last : 16;
-      last = ts;
-
-      // Resize canvas to match element if needed
-      const rect = contactsSection.getBoundingClientRect();
-      const newW = rect.width  || contactsSection.offsetWidth;
-      const newH = rect.height || contactsSection.offsetHeight;
-      if (newW !== W || newH !== H) {
-        W = newW; H = newH;
-        canvas.width  = W;
-        canvas.height = H;
-        canvas.style.width  = W + 'px';
-        canvas.style.height = H + 'px';
-      }
-
-      ctx.clearRect(0, 0, W, H);
-
-      // Dim glow trail along edges — very subtle rectangle stroke
-      ctx.save();
-      ctx.strokeStyle = 'rgba(255,255,255,0.025)';
-      ctx.lineWidth = 1;
-      ctx.strokeRect(0, 0, W, H);
-      ctx.restore();
-
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const p = particles[i];
-        p.t += p.speed * dt;
-        if (p.t >= 1) p.t -= 1;
-
-        const { x, y } = perimeterToXY(p.t, W, H);
-
-        // Slight random drift perpendicular to edge (±4px)
-        const jitter = (Math.sin(p.t * 31.7 + i) * 4);
-        const seg = ((p.t * 4) % 4);
-        let px = x, py = y;
-        if (seg < 1)       py += jitter;
-        else if (seg < 2)  px -= jitter;
-        else if (seg < 3)  py -= jitter;
-        else               px += jitter;
-
-        // Glow
-        const glow = ctx.createRadialGradient(px, py, 0, px, py, p.size * 3.5);
-        glow.addColorStop(0, p.colour);
-        glow.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.beginPath();
-        ctx.arc(px, py, p.size * 3.5, 0, Math.PI * 2);
-        ctx.fillStyle = glow;
-        ctx.fill();
-
-        // Core dot
-        ctx.beginPath();
-        ctx.arc(px, py, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.colour;
-        ctx.fill();
-      }
-
-      raf = requestAnimationFrame(draw);
-    }
-
-    // Only animate when visible
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          if (!raf) { last = 0; raf = requestAnimationFrame(draw); }
-        } else {
-          if (raf) { cancelAnimationFrame(raf); raf = null; }
-        }
-      }, { threshold: 0.05 });
-      io.observe(contactsSection);
-    } else {
-      raf = requestAnimationFrame(draw);
-    }
-  }
 
   const observer = new MutationObserver(() => {
     const contactsWrap = document.querySelector('[class*="contactsWrap"]');
@@ -524,7 +419,6 @@
       mountMyWork();
     }
     updateFooterMonogram();
-    initContactParticleRect();
   });
   observer.observe(document.body, { childList: true, subtree: true });
 })();

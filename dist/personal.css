@@ -537,8 +537,12 @@ body:not([data-preloading="true"]) .personal-nav {
 .status-msg {
   font-family: var(--font-mono);
   font-size: 11.5px;
-  color: #fbbf24;
+  color: #34d399;
 }
+
+.vuln-status-wrap { background: rgba(52, 211, 153, .08); border-color: rgba(52, 211, 153, .25); }
+.status-indicator { background: #34d399; box-shadow: none; flex-shrink: 0; }
+.personal-nav-toggle { display: none; }
 
 .outcome-banner {
   display: flex;
@@ -704,4 +708,83 @@ body:not([data-preloading="true"]) .personal-nav {
   .personal-nav a[href*='github'] {
     font-size: 9.5px;
   }
+}
+
+/* Keep the contact text and its particle wrappers within the viewport. */
+.contacts-module-scss-module__UjTc3a__copy {
+  width: 100%;
+  min-width: 0;
+}
+.contacts-module-scss-module__UjTc3a__emailShell {
+  max-width: 100%;
+  min-width: 0;
+}
+.contacts-module-scss-module__UjTc3a__emailShell[data-entered="true"] {
+  filter: none;
+}
+.contacts-module-scss-module__UjTc3a__emailShell [class*="particle-disintegrate"]:not(canvas) {
+  max-width: 100%;
+  min-width: 0;
+}
+.contacts-module-scss-module__UjTc3a__email {
+  font-size: clamp(16px, 4.7vw, 85px) !important;
+  overflow-wrap: anywhere;
+}
+.contact-particle-rect {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .personal-nav {
+    top: max(12px, env(safe-area-inset-top));
+    left: auto;
+    right: 4vw;
+    width: min(220px, 92vw);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    font-size: 14px;
+  }
+  .personal-nav-toggle {
+    display: block;
+    align-self: flex-end;
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid #666;
+    border-radius: 24px;
+    color: #f0f2f0;
+    background: #252528;
+    font: inherit;
+    cursor: pointer;
+  }
+  .personal-nav > a { display: none; }
+  .personal-nav:has([aria-expanded="true"]) {
+    background: #252528;
+    border: 1px solid #555;
+    border-radius: 20px;
+    padding: 8px;
+  }
+  .personal-nav:has([aria-expanded="true"]) > a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 8px 14px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  .my-work-section { box-sizing: border-box; padding-inline: 5vw; }
+  .my-work-container { width: 100%; }
+  .work-card, .vuln-card, .case-study-body { min-width: 0; overflow-wrap: anywhere; }
+  .vuln-card { padding: 16px; }
+  .vuln-card-head { flex-wrap: wrap; gap: 8px; }
+  .vuln-name { min-width: 120px; }
+  .work-badge { max-width: 100%; box-sizing: border-box; }
+  .outcome-banner { padding: 14px; align-items: flex-start; }
+  [class*="contactsWrap"] footer { padding-inline: 5vw; box-sizing: border-box; }
+  [class*="footer-module"] [class*="particle-disintegrate"]:not(canvas) { max-width: 100%; }
+  [class*="footer-module"][class*="line"] { white-space: normal; font-size: 12px; }
 }
