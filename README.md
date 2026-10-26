@@ -20,9 +20,15 @@ Interactive 3D particle portfolio showcasing cybersecurity projects, technical f
   - **05 / Get Location**: Security awareness tool demonstrating browser geolocation permissions ([GitHub](https://github.com/harpind3r/Get-location)).
   - **06 / Wireless Security Lab**: Wi-Fi 4-way handshake capture and rogue Evil Twin access point demonstration with **seamless looping demonstration video** (`Evil twin attack.MP4`).
   - **07 / Ransomware Home Lab**: Isolated virtualization environment simulating ransomware attack vectors and Metasploit penetration testing with **seamless looping demonstration video** (`Ransomware attack.MP4`).
-- **My Work & Experience**:
+  - **08 / Digital Forensics Case B4DM755**: DFIR investigation, artifact recovery, and timeline reconstruction ([LinkedIn Case Study](https://www.linkedin.com/posts/harpinder-singh-324886402_cybersecurity-digitalforensics-dfir-activity-7515755026091376640-pFI5)) with **seamless looping forensic demonstration video** (`Digital Forensics Case B4DM755..MP4`).
+- **My Work & Experience (Modernized Dark Aesthetic)**:
+  - **Case Study: Digital Forensics Case B4DM755**: Full DFIR investigation analyzing compromised system images, forensic disk artifacts, memory dump analysis, and attack timeline reconstruction with live video walkthrough.
   - **Founder & Technical Operations Head | Beeskilled** (AICTE-Listed E-Learning Platform): Managed backend operations, server uptime, and account provisioning for 10,000+ students; enforced secure access control policies.
   - **Web Application Security Assessment | SkillNexis** (`skillnexis.in`): Identified and responsibly disclosed High-severity authentication bypass via client storage and exposed administrative password hashes, providing remediation roadmaps.
+- **Design & Performance Architecture**:
+  - **Modern Typography**: Intergrated premium Google Fonts (`Plus Jakarta Sans`, `Space Grotesk`, `JetBrains Mono`).
+  - **Smooth, Lightweight Scrolling**: Lenis smooth scroll engine configured with silky lerp damping, reduced motion awareness, and zero jank.
+  - **GPU Accelerated Rendering**: Hardware-accelerated CSS layers with `transform: translate3d(0,0,0)`, `backface-visibility: hidden`, and content visibility optimization.
 - **Glassmorphic Navigation Bar**: Direct shortcuts to Projects, My Work, GitHub, TryHackMe, LinkedIn, and Résumé PDF.
 
 ---

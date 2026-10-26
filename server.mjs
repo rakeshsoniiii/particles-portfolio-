@@ -28,7 +28,7 @@ export function createServer(root = 'public') {
         info = await stat(file);
       }
       const headers = {
-        'Content-Type': types[path.extname(file)] || 'application/octet-stream',
+        'Content-Type': types[path.extname(file).toLowerCase()] || 'application/octet-stream',
         'Accept-Ranges': 'bytes',
         'Cache-Control': 'no-cache',
         'X-Content-Type-Options': 'nosniff',

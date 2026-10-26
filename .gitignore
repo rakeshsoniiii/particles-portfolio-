@@ -1,6 +1,47 @@
-dist/
+# Dependencies
 node_modules/
+
+# Logs
 *.log
+npm-debug.log*
+
+# Build artifacts kept only locally
 graphify-out/
+
+# dist/ is the hosting folder — track it
+!dist/
+
+# Reference / temporary material — not for hosting
 temp-refrence/
-docs/research/rea/
+docs/
+
+# Agent task files
+.agents/tasks/
+
+# Dev-only scripts (not needed for hosting)
+scripts/check_dom_state.mjs
+scripts/download-media.mjs
+scripts/download-routes.mjs
+scripts/download.mjs
+scripts/generate_ui_cards.py
+scripts/inspect-detail.mjs
+scripts/inspect.mjs
+scripts/localize.mjs
+scripts/optimize-particles.py
+scripts/particle-inspect.mjs
+scripts/preview-particles.py
+scripts/refine-particles.py
+scripts/verify_my_work.py
+scripts/check-media-images.py
+scripts/check-monogram-observer.mjs
+scripts/check-monogram.mjs
+scripts/compare-broken.mjs
+scripts/diagnose-syntax.mjs
+scripts/fix-generator-boundary.mjs
+scripts/fix-monogram-syntax.mjs
+scripts/inspect-project-scroll.mjs
+scripts/optimize-media.py
+
+# OS
+.DS_Store
+Thumbs.db

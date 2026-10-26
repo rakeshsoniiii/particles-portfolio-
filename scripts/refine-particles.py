@@ -1,2 +1,0 @@
-from pathlib import Path
-p=Path('scripts/personalize-particles.py');s=p.read_text();s=s.replace('from PIL import Image','from PIL import Image, ImageDraw',1);s=s.replace('w,h=im.size\npts=[]','w,h=im.size\nbackground=Image.new("L",(w,h));background.putdata([255 if min(p)>220 else 0 for p in im.getdata()])\nImageDraw.floodfill(background,(0,0),128)\nImageDraw.floodfill(background,(w-1,0),128)\npts=[]');s=s.replace('if min(r,g,b)>220:continue','if background.getpixel((x,y))==128:continue');p.write_text(s)
