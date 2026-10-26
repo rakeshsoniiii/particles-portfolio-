@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 /* ── Typography & Global Overrides ───────────────────── */
 :root {
-  --font-sans: "Plus Jakarta Sans", "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-  --font-display: "Space Grotesk", "Plus Jakarta Sans", sans-serif !important;
+  --font-sans: "Outfit", "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  --font-display: "Syne", "Outfit", sans-serif !important;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace !important;
 }
 
@@ -686,4 +686,55 @@ body:not([data-preloading="true"]) .personal-nav {
   .personal-nav a[href*='github'] {
     font-size: 9.5px;
   }
+}
+
+/* ── Animated Particle Rectangle (Contact Section Border) ── */
+.contact-particle-rect {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Make the contacts section a positioned container for the canvas */
+[class*="contacts-module__contacts"] {
+  position: relative;
+  overflow: visible;
+}
+
+/* Ensure contacts copy stays above the canvas */
+[class*="contacts-module__copy"] {
+  position: relative;
+  z-index: 2;
+}
+
+/* Email hover: scale up slightly */
+[class*="contacts-module__emailShell"]:hover,
+[class*="contacts-module__emailShell"][data-entered="true"] {
+  filter: brightness(1.15);
+}
+
+/* Syne display font — tighter tracking for headings */
+h1, h2, h3, h4,
+.t-85, .t-30,
+[class*="captionTitle"],
+.my-work-title,
+.work-role {
+  font-family: var(--font-display) !important;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+/* Outfit body font — clean, modern, readable */
+body,
+p, li, span,
+.t-16, .t-20,
+[class*="kickerLabel"],
+[class*="captionInfo"],
+[class*="captionYear"],
+.my-work-desc,
+.work-points,
+.case-desc,
+.vuln-text {
+  font-family: var(--font-sans) !important;
 }
