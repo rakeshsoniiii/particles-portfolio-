@@ -124,5 +124,23 @@
     "collaboration": "Personal project by Harpinder Singh.",
     "partner": "",
     "partnerUrl": ""
+  },
+  {
+    "slug": "digital-forensics-case-b4dm755",
+    "title": "Digital Forensics Case B4DM755",
+    "tagline": "DFIR Investigation · Evidence analysis",
+    "href": "https://www.linkedin.com/posts/harpinder-singh-324886402_cybersecurity-digitalforensics-dfir-activity-7515755026091376640-pFI5",
+    "info": "08 / CASE STUDY",
+    "year": "",
+    "video": "/assets/projects/Digital Forensics Case B4DM755..MP4",
+    "image": "/assets/projects/digital-forensics-case-b4dm755.jpg",
+    "description": [
+      "DFIR Investigation · Evidence analysis"
+    ],
+    "stack": [],
+    "stackNote": "",
+    "collaboration": "Personal project by Harpinder Singh.",
+    "partner": "",
+    "partnerUrl": ""
   }
 ]
