@@ -224,7 +224,7 @@
     // adjacent edges, not the wrap point) don't have this. A mid-edge seam
     // is the same discontinuity, just hidden inside a straight run instead
     // of distorting a sharp 90\xb0 corner.
-    float outlineT = fract(aWaveX + 0.5 + outlineTopShare * 0.5);
+    float outlineT = fract(aWaveX + 0.5 + outlineTopShare * 0.5 + uTime * 0.05);
     vec2 outlineXY;
     if (outlineT < outlineTopShare) {
       float u = outlineT / outlineTopShare;
