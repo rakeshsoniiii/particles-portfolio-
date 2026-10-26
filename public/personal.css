@@ -544,6 +544,20 @@ body:not([data-preloading="true"]) .personal-nav {
 .status-indicator { background: #34d399; box-shadow: none; flex-shrink: 0; }
 .personal-nav-toggle { display: none; }
 
+.video-preview-wrap { position: relative; display: block; }
+.video-preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+}
+.video-preview[hidden] { display: none; }
+.case-video-badge { z-index: 3; }
+
 .outcome-banner {
   display: flex;
   align-items: center;

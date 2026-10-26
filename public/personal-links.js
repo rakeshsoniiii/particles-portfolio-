@@ -425,6 +425,21 @@
   function observeMedia() {
     document.querySelectorAll('video[data-src]:not([data-observed])').forEach(video => {
       video.dataset.observed = 'true';
+      // A separate image survives stalled playback and codec errors; native posters do not.
+      const preview = document.createElement('img');
+      preview.src = video.poster;
+      preview.alt = 'Video preview';
+      preview.className = 'video-preview';
+      video.parentElement.classList.add('video-preview-wrap');
+      video.parentElement.insertBefore(preview, video);
+      const showPreview = () => { preview.hidden = false; };
+      video.addEventListener('playing', () => {
+        if (video.requestVideoFrameCallback) {
+          video.requestVideoFrameCallback(() => { preview.hidden = true; });
+        } else if (video.readyState >= 2) preview.hidden = true;
+      });
+      video.addEventListener('error', showPreview);
+      video.addEventListener('emptied', showPreview);
       mediaObserver.observe(video);
     });
   }
