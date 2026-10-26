@@ -16,5 +16,9 @@ async function walk(directory) {
   }
 }
 await walk('dist');
-await writeFile('docs/research/build-manifest.json', JSON.stringify(manifest, null, 2));
+// Write manifest only if the docs/research directory exists (local dev only)
+try {
+  await mkdir('docs/research', { recursive: true });
+  await writeFile('docs/research/build-manifest.json', JSON.stringify(manifest, null, 2));
+} catch {}
 console.log(`Built ${manifest.length} files (${(manifest.reduce((sum, f) => sum + f.bytes, 0) / 1024 / 1024).toFixed(1)} MB) into dist/.`);

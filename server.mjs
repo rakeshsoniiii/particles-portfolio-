@@ -63,7 +63,7 @@ export function createServer(root = 'public') {
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const port = Number(process.env.PORT || 3000);
-  createServer(process.argv[2] || 'public').listen(port, '127.0.0.1', () => {
+  createServer(process.argv[2] || 'public').listen(port, '0.0.0.0', () => {
     console.log(`Portfolio available at http://localhost:${port}`);
   });
 }
