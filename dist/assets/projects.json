@@ -7,7 +7,7 @@
     "info": "01 / ANALYSIS",
     "year": "",
     "video": "",
-    "image": "/assets/projects/nla-engine.jpg",
+    "image": "/assets/projects/nla-engine.webp",
     "description": [
       "Financial OSINT · Network analysis"
     ],
@@ -25,7 +25,7 @@
     "info": "02 / FORENSICS",
     "year": "",
     "video": "",
-    "image": "/assets/projects/cyber-cell-cdr.jpg",
+    "image": "/assets/projects/cyber-cell-cdr.webp",
     "description": [
       "CDR & IPDR · Telecom forensics"
     ],
@@ -43,7 +43,7 @@
     "info": "03 / SECURITY",
     "year": "",
     "video": "",
-    "image": "/assets/projects/ghostnet.jpg",
+    "image": "/assets/projects/ghostnet.webp",
     "description": [
       "Cybersecurity project"
     ],
@@ -61,7 +61,7 @@
     "info": "04 / AUTOMATION",
     "year": "",
     "video": "",
-    "image": "/assets/projects/ip-changer.jpg",
+    "image": "/assets/projects/ip-changer.webp",
     "description": [
       "Tor-based IP rotation · Bash"
     ],
@@ -79,7 +79,7 @@
     "info": "05 / AWARENESS",
     "year": "",
     "video": "",
-    "image": "/assets/projects/get-location.jpg",
+    "image": "/assets/projects/get-location.webp",
     "description": [
       "Browser permission awareness · Flask"
     ],
@@ -97,7 +97,7 @@
     "info": "06 / WIRELESS",
     "year": "",
     "video": "/assets/projects/Evil twin attack.MP4",
-    "image": "/assets/projects/wireless-security-lab.jpg",
+    "image": "/assets/projects/wireless-security-lab.webp",
     "description": [
       "Wi-Fi handshake & Evil Twin lab"
     ],
@@ -115,7 +115,7 @@
     "info": "07 / HOME LAB",
     "year": "",
     "video": "/assets/projects/Ransomware attack.MP4",
-    "image": "/assets/projects/ransomware-homelab.jpg",
+    "image": "/assets/projects/ransomware-homelab.webp",
     "description": [
       "Isolated virtual lab · Metasploit"
     ],
@@ -133,7 +133,7 @@
     "info": "08 / CASE STUDY",
     "year": "",
     "video": "/assets/projects/Digital Forensics Case B4DM755..MP4",
-    "image": "/assets/projects/digital-forensics-case-b4dm755.jpg",
+    "image": "/assets/projects/digital-forensics-case-b4dm755.webp",
     "description": [
       "DFIR Investigation · Evidence analysis"
     ],

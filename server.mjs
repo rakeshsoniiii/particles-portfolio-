@@ -3,6 +3,7 @@ import { createReadStream } from 'node:fs';
 import { stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createGzip } from 'node:zlib';
 
 const types = { '.html': 'text/html; charset=utf-8', '.rsc': 'text/x-component', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.woff2': 'font/woff2', '.png': 'image/png', '.jpg': 'image/jpeg', '.ico': 'image/x-icon', '.svg': 'image/svg+xml', '.mp4': 'video/mp4', '.pdf': 'application/pdf', '.bin': 'application/octet-stream' };
 
@@ -34,6 +35,16 @@ export function createServer(root = 'public') {
         'X-Content-Type-Options': 'nosniff',
         Vary: 'RSC, Next-Router-State-Tree, Next-Router-Prefetch',
       };
+      if (file.endsWith('.webp')) headers['Content-Type'] = 'image/webp';
+      const etag = `W/"${info.size}-${Math.trunc(info.mtimeMs)}"`;
+      headers.ETag = etag;
+      headers['Cache-Control'] = /\.(html|rsc|js|css)$/.test(file)
+        ? 'no-cache' : 'public, max-age=3600';
+      headers.Vary += ', Accept-Encoding';
+      if (!req.headers.range && req.headers['if-none-match'] === etag) {
+        res.writeHead(304, headers).end();
+        return;
+      }
       let start = 0;
       let end = info.size - 1;
       let status = 200;
@@ -51,9 +62,19 @@ export function createServer(root = 'public') {
         headers['Content-Range'] = `bytes ${start}-${end}/${info.size}`;
       }
       headers['Content-Length'] = end - start + 1;
+      const gzip = status === 200 && /\.(html|rsc|js|css|svg|json|bin)$/.test(file)
+        && /\bgzip\b(?!\s*;\s*q=0(?:\D|$))/.test(req.headers['accept-encoding'] || '');
+      if (gzip) {
+        headers['Content-Encoding'] = 'gzip';
+        delete headers['Content-Length'];
+      }
       res.writeHead(status, headers);
       if (req.method === 'HEAD') res.end();
-      else createReadStream(file, { start, end }).on('error', () => res.destroy()).pipe(res);
+      else {
+        const stream = createReadStream(file, { start, end }).on('error', () => res.destroy());
+        if (gzip) stream.pipe(createGzip()).on('error', () => res.destroy()).pipe(res);
+        else stream.pipe(res);
+      }
     } catch (error) {
       const status = error.code === 'ENOENT' || error.code === 'ENOTDIR' ? 404 : error instanceof URIError ? 400 : 500;
       res.writeHead(status, { 'Content-Type': 'text/plain' }).end(status === 404 ? 'Page not found' : 'Request failed');

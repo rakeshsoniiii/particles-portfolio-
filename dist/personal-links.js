@@ -253,7 +253,7 @@
       <div class="case-study-layout">
         <div class="case-study-media">
           <div class="case-video-wrapper">
-            <video src="/assets/projects/Digital Forensics Case B4DM755..MP4" autoPlay loop muted playsInline preload="metadata" class="case-video"></video>
+            <video data-src="/assets/projects/Digital Forensics Case B4DM755..MP4" poster="/assets/projects/digital-forensics-case-b4dm755.webp" loop muted playsInline preload="none" class="case-video"></video>
             <div class="case-video-badge">LIVE DFIR LAB REPLAY</div>
           </div>
         </div>
@@ -412,7 +412,25 @@
     handleProjectsHash();
   });
 
+  // Download and play lab videos only while their card is on screen.
+  const mediaObserver = new IntersectionObserver(entries => {
+    for (const { target: video, isIntersecting } of entries) {
+      if (isIntersecting && !document.hidden) {
+        if (!video.getAttribute('src')) video.src = video.dataset.src;
+        video.muted = true;
+        video.play().catch(() => {});
+      } else video.pause();
+    }
+  }, { threshold: 0.15 });
+  function observeMedia() {
+    document.querySelectorAll('video[data-src]:not([data-observed])').forEach(video => {
+      video.dataset.observed = 'true';
+      mediaObserver.observe(video);
+    });
+  }
+  observeMedia();
   const observer = new MutationObserver(() => {
+    observeMedia();
     const contactsWrap = document.querySelector('[class*="contactsWrap"]');
     const section = document.getElementById('my-work');
     if (contactsWrap && (!section || section.nextElementSibling !== contactsWrap)) {

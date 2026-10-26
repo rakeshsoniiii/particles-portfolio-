@@ -37,6 +37,14 @@ try {
   assert.deepEqual(projects.map(project => project.slug), ['nla-engine', 'cyber-cell-cdr', 'ghostnet', 'ip-changer', 'get-location', 'wireless-security-lab', 'ransomware-homelab', 'digital-forensics-case-b4dm755']);
   for (const project of projects) assert.equal((await fetch(base + project.image)).status, 200);
   const home = await (await fetch(base)).text();
+  const compressed = await fetch(base + '/personal-links.js', { headers: { 'Accept-Encoding': 'gzip' } });
+  assert.equal(compressed.headers.get('content-encoding'), 'gzip');
+  assert.match(await compressed.text(), /observeMedia/);
+  const unchanged = await fetch(base + '/personal-links.js', { headers: { 'If-None-Match': compressed.headers.get('etag') } });
+  assert.equal(unchanged.status, 304);
+  const poster = await fetch(base + projects[0].image);
+  assert.equal(poster.headers.get('content-type'), 'image/webp');
+  assert.match(poster.headers.get('cache-control'), /max-age=3600/);
   assert.ok(home.includes('Harpinder Singh'));
   assert.ok(home.includes('harpindersinghhs8696@gmail.com'));
   assert.ok(!home.includes('Daniel Ingrassia'));
